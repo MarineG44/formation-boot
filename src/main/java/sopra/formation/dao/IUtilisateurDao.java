@@ -2,6 +2,7 @@ package sopra.formation.dao;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,6 +15,10 @@ import sopra.formation.model.Utilisateur;
 public interface IUtilisateurDao extends JpaRepository<Utilisateur, Long>, UtilisateurDaoCustom {
 	// Trouver un formateur par son email
 	Formateur findByEmail(String email);
+	
+	// Trouver un stagiaire par son id
+	@Query("select s from Stagiaire s where s.id = :id")
+	Optional<Stagiaire> findStagiaireById(@Param("id") Long id);
 	
 	// Lister les stagiaires en préchargeant les cursus de chacun
 	@Query("select distinct s from Stagiaire s left join fetch s.cursus")
