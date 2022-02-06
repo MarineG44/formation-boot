@@ -8,24 +8,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Cursus {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@ManyToOne
 	@JoinColumn(name = "stagiaire_id")
+	@JsonView(Views.ViewCursus.class)
 	private Stagiaire stagiaire;
 	@ManyToOne
 	@JoinColumn(name = "filiere_id")
+	@JsonView(Views.ViewCursus.class)
 	private Filiere filiere;
+	@JsonView(Views.ViewCursus.class)
 	private int noteC;
 	@Column(length = 4000)
+	@JsonView(Views.ViewCursus.class)
 	private String commentairesC;
+	@JsonView(Views.ViewCursus.class)
 	private int noteT;
 	@Column(length = 4000)
+	@JsonView(Views.ViewCursus.class)
 	private String commentairesT;
 
 	public Cursus() {

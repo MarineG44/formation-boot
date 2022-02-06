@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import sopra.formation.config.ApplicationConfig;
 import sopra.formation.dao.IAbsenceDao;
 import sopra.formation.dao.ICompetenceDao;
 import sopra.formation.dao.ICoursDao;
