@@ -24,4 +24,19 @@ public class Views {
 		
 	}
 	
+	public static class ViewUtilisateurDetail extends ViewCommon {
+
+	}
+	
+	public static class ViewStagiaire extends ViewCommon {
+
+	}
+	
+	public static class ViewStagiaireDetail extends ViewStagiaire {
+
+	}
+	
+	public static class ViewCursus extends ViewCommon {
+
+	}
 }

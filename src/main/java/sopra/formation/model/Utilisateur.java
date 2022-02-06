@@ -17,6 +17,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", length = 20)
@@ -24,27 +26,38 @@ import javax.persistence.Version;
 public class Utilisateur {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Column(length = 100)
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Column(length = 255)
+	@JsonView(Views.ViewCommon.class)
 	private String email;
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
+	@JsonView(Views.ViewCommon.class)
 	private Droit droit;
 	@Column(length = 15)
+	@JsonView(Views.ViewCommon.class)
 	private String telephone;
 	@Column(length = 255)
+	@JsonView(Views.ViewCommon.class)
 	private String identifiant;
 	@Column(length = 30)
+	@JsonView(Views.ViewCommon.class)
 	private String motDePasse;
 	@Embedded
+	@JsonView(Views.ViewCommon.class)
 	private Adresse adr;
 	@OneToMany(mappedBy = "gestionnaire")
+	@JsonView(Views.ViewUtilisateurDetail.class)
 	private List<Filiere> filieres = new ArrayList<>();
 
 	public Utilisateur() {
