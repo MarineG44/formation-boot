@@ -9,27 +9,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 public class Matiere {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Column(length = 255)
+	@JsonView(Views.ViewCommon.class)
 	private String titre;
+	@JsonView(Views.ViewCommon.class)
 	private int duree;
 	@Column(length = 4000)
+	@JsonView(Views.ViewCommon.class)
 	private String objectifs;
 	@Column(length = 4000)
+	@JsonView(Views.ViewCommon.class)
 	private String preRequis;
-	@Lob
+	@Column(length = 4000)
+	@JsonView(Views.ViewCommon.class)
 	private String programme;
 	@OneToMany(mappedBy = "matiere")
+	@JsonView(Views.ViewMatiereDetail.class)
 	private List<Cours> cours = new ArrayList<>();
 	@OneToMany(mappedBy = "matiere")
+	@JsonView(Views.ViewMatiereDetail.class)
 	private List<Competence> competences = new ArrayList<>();
 
 	public Matiere() {

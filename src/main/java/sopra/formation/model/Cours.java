@@ -8,23 +8,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Cours {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private int duree;
+	@JsonView(Views.ViewCommon.class)
 	private int ordre;
 	@ManyToOne
 	@JoinColumn(name = "filiere_id")
+	@JsonView(Views.ViewCommon.class)
 	private Filiere filiere;
 	@ManyToOne
+	@JsonView(Views.ViewCommon.class)
 	@JoinColumn(name = "formateur_id")
 	private Formateur formateur;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "matiere_id")
+	@JsonView(Views.ViewCoursDetail.class)
 	private Matiere matiere;
 
 	public Cours() {
