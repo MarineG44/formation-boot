@@ -12,7 +12,7 @@ export class CoursComponent implements OnInit {
 
   coursForm: Cours = null;
 
-  constructor(private coursService: CoursHttpService, private route : ActivatedRoute) {
+  constructor(private coursService: CoursHttpService, private filiereService: FiliereHttpService, private route : ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.coursService.load();
       let id: number = params['id'];
@@ -26,6 +26,10 @@ export class CoursComponent implements OnInit {
   }
   list(): Array<Cours> {
     return this.coursService.findAll();
+  }
+
+  listFiliere(): Array<Filiere> {
+    return this.filiereService.findAll();
   }
 
   add() {

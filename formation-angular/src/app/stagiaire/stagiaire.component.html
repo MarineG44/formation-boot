@@ -25,7 +25,7 @@
                     <td>{{stag.prenom}}</td>
                     <td>{{stag.email}}</td>
                     <td>{{stag.telephone}}</td>
-                    <td>{{stag.adr}}</td>
+                    <td>{{stag.adr?.rue}}</td>
                     <td>{{stag.dateNaissance | date: 'dd/MM/yyyy'}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
@@ -75,8 +75,17 @@
             <input type="password" class="form-control" id="motDePasse" [(ngModel)]="stagiaireForm.motDePasse">
         </div>
         <div class="form-group">
-            <label for="adr">Adresse :</label>
-            <input type="text" class="form-control" id="adr" [(ngModel)]="stagiaireForm.adr">
+            <label for="adresse">Adresse :</label>
+            <div id="adresse" class="form-group card p-3">
+                <label for="rue">Rue</label>
+                <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaire.adresse.rue">
+                <label for="complement">Complément</label>
+                <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaireForm.adresse.complement">
+                <label for="codePostal">Code Postal</label>
+                <input type="text" class="form-control" id="codePostal" [(ngModel)]="stagiaireForm.adresse.codePostal">
+                <label for="ville">Ville</label>
+                <input type="text" css="form-control" id="ville" [(ngModel)]="stagiaireForm.adresse.ville">
+            </div>
         </div>
 
         <div class="form-group">
