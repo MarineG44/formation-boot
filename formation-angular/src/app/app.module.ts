@@ -6,6 +6,7 @@ import { StagiaireComponent } from './stagiaire/stagiaire.component';
 import { CursusComponent } from './cursus/cursus.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { RouterModule, Routes } from '@angular/router';
+import { StagiaireHttpService } from './stagiaire/stagiaire-http.service';
 
 
 const routes: Routes = [
@@ -24,7 +25,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [StagiaireHttpService],
   bootstrap: [AppComponent]
 })
 

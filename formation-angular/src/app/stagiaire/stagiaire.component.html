@@ -20,15 +20,17 @@
             <tbody>
                 <tr *ngFor="let stag of list()">
                     <td>{{stag.id}}</td>
-                    <td>{{client.version}}</td>
-                    <td>{{client.civilite}}</td>
-                    <td>{{client.nom}}</td>
-                    <td>{{client.prenom}}</td>
-                    <td>{{client.dateNaissance | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{stag.version}}</td>
+                    <td>{{stag.nom}}</td>
+                    <td>{{stag.prenom}}</td>
+                    <td>{{stag.email}}</td>
+                    <td>{{stag.telephone}}</td>
+                    <td>{{stag.adr}}</td>
+                    <td>{{stag.dateNaissance | date: 'dd/MM/yyyy'}}</td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" (click)="edit(client.id)"><i class="bi bi-pencil-square"></i></a>
-                            <a class="btn btn-danger" (click)="delete(client.id)"><i class="bi bi-trash"></i></a>
+                            <a class="btn btn-primary" (click)="edit(stag.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="delete(stag.id)"><i class="bi bi-trash"></i></a>
                         </div>
                     </td>
                 </tr>
@@ -40,4 +42,58 @@
             <i class="bi bi-plus-square"></i>
         </a>
     </div>
+</div>
+
+<div class="card mt-3" *ngIf="stagiaireForm">
+    <div class="card-header bg-info text-white">
+        <h3>Edition du stagiaire</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="stagiaireForm.nom">
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="stagiaireForm.prenom">
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="text" class="form-control" id="email" [(ngModel)]="stagiaireForm.email">
+        </div>
+        <div class="form-group">
+            <label for="tel">Téléphone :</label>
+            <input type="text" class="form-control" id="tel" [(ngModel)]="stagiaireForm.telephone">
+        </div>
+        <div class="form-group">
+            <label for="ident">Identifiant :</label>
+            <input type="text" class="form-control" id="ident" [(ngModel)]="stagiaireForm.identifiant">
+        </div>
+        <div class="form-group">
+            <label for="motDePasse">Mot de passe :</label>
+            <input type="password" class="form-control" id="motDePasse" [(ngModel)]="stagiaireForm.motDePasse">
+        </div>
+        <div class="form-group">
+            <label for="adr">Adresse :</label>
+            <input type="text" class="form-control" id="adr" [(ngModel)]="stagiaireForm.adr">
+        </div>
+
+        <div class="form-group">
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="date" class="form-control" id="dateNaissance" [(ngModel)]="stagiaireForm.dateNaissance">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-end">
+            <a class="btn btn-success" (click)="save()">
+                <i class="bi bi-check-square"></i>
+            </a>
+            <a class="btn btn-warning" (click)="cancel()">
+                <i class="bi bi-backspace"></i>
+            </a>
+        </div>
+    </div>
+
 </div>
