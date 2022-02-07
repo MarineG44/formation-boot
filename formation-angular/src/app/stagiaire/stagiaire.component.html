@@ -1,0 +1,43 @@
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Liste des stagiaires</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Version</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Date de naissance</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stag of list()">
+                    <td>{{stag.id}}</td>
+                    <td>{{client.version}}</td>
+                    <td>{{client.civilite}}</td>
+                    <td>{{client.nom}}</td>
+                    <td>{{client.prenom}}</td>
+                    <td>{{client.dateNaissance | date: 'dd/MM/yyyy'}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(client.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="delete(client.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">
+            <i class="bi bi-plus-square"></i>
+        </a>
+    </div>
+</div>
