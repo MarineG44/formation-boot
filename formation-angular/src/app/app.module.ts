@@ -10,6 +10,7 @@ import { StagiaireHttpService } from './stagiaire/stagiaire-http.service';
 import { CoursComponent } from './cours/cours.component';
 import { FormsModule } from '@angular/forms';
 import { FiliereComponent } from './filiere/filiere.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [StagiaireHttpService],
   bootstrap: [AppComponent]
