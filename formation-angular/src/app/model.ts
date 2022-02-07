@@ -114,7 +114,7 @@ export class Stagiaire extends Utilisateur {
     dateNaissance: string;
     cursus: Array<Cursus> = new Array<Cursus>();
 
-    constructor(id?: number, version?:number, nom?: string, prenom?: string, email?: string, droit?: Droit, telephone?: string, identifiant?: string,
+    constructor(id?: number, version?:number, nom?: string, prenom?: string, email?: string, droit?: string, telephone?: string, identifiant?: string,
         motDePasse?: string, adr?: Adresse) {
             super(id, version, nom, prenom, email, droit, telephone, identifiant,
                 motDePasse, adr)
