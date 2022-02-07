@@ -1,0 +1,93 @@
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Liste des cours</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Version</th>
+                    <th>Durée</th>
+                    <th>Ordre</th>
+                    <th>Filière</th>
+                    <th>Formateur</th>
+                    <th>Matière</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cours of list()">
+                    <td>{{cours.id}}</td>
+                    <td>{{cours.version}}</td>
+                    <td>{{cours.duree}}</td>
+                    <td>{{cours.ordre}}</td>
+                    <td>{{cours.filiere?.id}}</td>
+                    <td>{{cours.formateur?.nom}}</td>
+                    <td>{{cours.matiere?.titre}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(cours.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="delete(cours.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">
+            <i class="bi bi-plus-square"></i>
+        </a>
+    </div>
+</div>
+
+<div class="card mt-3" *ngIf="coursForm">
+    <div class="card-header bg-info text-white">
+        <h3>Edition du cours</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <label for="duree">Durée :</label>
+            <input type="number" class="form-control" id="duree" [(ngModel)]="coursForm.duree">
+        </div>
+        <div class="form-group">
+            <label for="ordre">Ordre :</label>
+            <input type="number" class="form-control" id="ordre" [(ngModel)]="coursForm.ordre">
+        </div>
+        <div class="form-group">
+            <label for="filiere">Filière :</label>
+            <select class="form-control" id="filiere" [(ngModel)]="coursForm.filiere.id">
+                <option value="">Choisir une filière</option>
+                <option *ngFor="let filiere of listFiliere()" [value]="filiere.id">{{filiere.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="formateur">Formateur :</label>
+            <select class="form-control" id="formateur" [(ngModel)]="coursForm.formateur.id">
+                <option value="">Choisir un formateur</option>
+                <option *ngFor="let formateur of listFormateur()" [value]="formateur.id">{{formateur.nom}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="matiere">Matière :</label>
+            <select class="form-control" id="matiere" [(ngModel)]="coursForm.matiere.id">
+                <option value="">Choisir une matière</option>
+                <option *ngFor="let matiere of matiere()" [value]="matiere.id">{{matiere.titre}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-end">
+            <a class="btn btn-success" (click)="save()">
+                <i class="bi bi-check-square"></i>
+            </a>
+            <a class="btn btn-warning" (click)="cancel()">
+                <i class="bi bi-backspace"></i>
+            </a>
+        </div>
+    </div>
+
+</div>
