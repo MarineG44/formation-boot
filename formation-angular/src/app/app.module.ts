@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StagiaireHttpService } from './stagiaire/stagiaire-http.service';
 import { CoursComponent } from './cours/cours.component';
 import { FormsModule } from '@angular/forms';
+import { FiliereComponent } from './filiere/filiere.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
     StagiaireComponent,
     CursusComponent,
     AccueilComponent,
-    CoursComponent
+    CoursComponent,
+    FiliereComponent
   ],
   imports: [
     BrowserModule,

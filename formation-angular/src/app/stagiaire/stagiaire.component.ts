@@ -12,7 +12,15 @@ export class StagiaireComponent implements OnInit {
 
   stagiaireForm : Stagiaire;
 
-  constructor(private stagiaireService: StagiaireHttpService, private route: ActivatedRoute) { }
+  constructor(private stagiaireService: StagiaireHttpService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.stagiaireService.load();
+      let id: number = params['id'];
+      if(id) {
+        this.edit(id);
+      }
+    });
+   }
 
   ngOnInit(): void {
   }

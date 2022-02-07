@@ -1,3 +1,5 @@
+import * as internal from "stream";
+
 export abstract class Utilisateur {
 	id: number;
 	version: number;
@@ -78,7 +80,7 @@ export class Filiere
 	dispositif: string;
 	gestionnaire: Utilisateur;
 	referent: Formateur;
-	salle: Slottable;
+	salle: Salle;
 	cursus: Array<Cursus>;
 	cours: Array<Cours>;
 
@@ -107,6 +109,28 @@ export class Adresse {
 		this.complement = complement;
 		this.codePostal = codePostal;
 		this.ville = ville;
+	}
+}
+
+export class Salle {
+	id: number;
+	version: number;
+	nom: string;
+	url: string;
+	capacite: number;
+	adresse: Adresse;
+	filieres: Array<Filiere>;
+	
+
+	constructor(id?: number, version?: number, nom?: string, url?: string, capacite?: number, adresse?: Adresse, filieres?: Array<Filiere>) {
+		this.id = id;
+		this.version = version;
+		this.nom = nom;
+		this.url = url;
+		this.capacite = capacite;
+		this.adresse = adresse;
+		this.filieres = filieres;
+		
 	}
 }
 
